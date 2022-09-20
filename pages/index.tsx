@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Button from '../components/Button';
 
 const Home: NextPage = () => {
 	return (
@@ -10,7 +11,12 @@ const Home: NextPage = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main></main>
+			<main>
+				<Button>Click me!</Button>
+				<Button color='red'>Click me!</Button>
+				<Button color='purple'>Click me!</Button>
+				<Button color='green'>Click me!</Button>
+			</main>
 
 			<footer></footer>
 		</div>
