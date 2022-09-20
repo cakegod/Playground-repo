@@ -1,33 +1,34 @@
-import React from "react";
-const BASESTYLE =
-  "transition-colors m-4 rounded-xl px-3 py-3 text-sm font-semibold duration-300";
+import tw from "tailwind-styled-components";
 
-const COLORS = {
-    default: generateColor('gray'),
-    red: generateColor('red'),
-    green: generateColor('green'),
-    purple: generateColor('purple'),
-};
-
-function generateColor(color: string) {
-  return `
-  text-${color}-500 hover:bg-${color}-300 bg-${color}-100 dark:text-${color}-300 dark:hover:bg-${color}-700 dark:bg-${color}-900
-  `;
+interface IProps {
+  color: string;
+  text: string;
 }
 
-type ColorType = keyof typeof COLORS;
-
-interface Props {
-  color?: ColorType;
-  children: React.ReactNode;
+interface SButtonProps {
+  $primary: string;
 }
-function Button({ children, color }: Props) {
-  const style = [BASESTYLE, color ? COLORS[color] : COLORS.default].join(" ");
 
+const generateColor = (color: string) =>
+  `text-${color}-500 hover:bg-${color}-300 bg-${color}-100 dark:text-${color}-300 dark:hover:bg-${color}-700 dark:bg-${color}-900 `;
+
+const SButton = tw.button<SButtonProps>`
+  ${(p) => generateColor(p.$primary)}
+  transition-colors
+  m-4
+  rounded-xl
+  px-3
+  py-3
+  text-sm
+  font-semibold
+  duration-300
+`;
+
+function Button({ color, text }: IProps) {
   return (
-    <button type="button" className={style}>
-      {children}
-    </button>
+    <>
+      <SButton $primary={color}>{text}</SButton>
+    </>
   );
 }
 
