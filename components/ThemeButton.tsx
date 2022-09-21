@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Button from './Button';
 interface Props {
-	toggled: React.ReactNode;
-	untoggled: React.ReactNode;
+	toggledIcon: React.ReactNode;
+	untoggledIcon: React.ReactNode;
 	toggleTheme: () => void;
 }
 export default function ThemeToggle({
-	toggled,
-	untoggled,
+	toggledIcon,
+	untoggledIcon,
 	toggleTheme,
 }: Props) {
 	const [isToggled, setIsToggled] = useState(false);
@@ -17,7 +17,7 @@ export default function ThemeToggle({
 	};
 	return (
 		<Button handleToggle={handleToggle}>
-			{isToggled ? toggled : untoggled}
+			{isToggled ? toggledIcon : untoggledIcon}
 		</Button>
 	);
 }
