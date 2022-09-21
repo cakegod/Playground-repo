@@ -10,6 +10,9 @@ const COLORS = {
 	purple:
 		'text-purple-500 hover:bg-purple-200 bg-purple-100 dark:text-purple-300 dark:hover:bg-purple-800 dark:bg-purple-900',
 	rose: 'text-rose-500 hover:bg-rose-200 bg-rose-100 dark:text-rose-300 dark:hover:bg-rose-800 dark:bg-rose-900',
+	amber:
+		'text-amber-500 hover:bg-amber-200 bg-amber-100 dark:text-amber-300 dark:hover:bg-amber-800 dark:bg-amber-900',
+	sky: 'text-sky-500 hover:bg-sky-200 bg-sky-100 dark:text-sky-300 dark:hover:bg-sky-800 dark:bg-sky-900',
 };
 
 type ColorType = keyof typeof COLORS;
@@ -18,9 +21,14 @@ interface Props {
 	color?: ColorType;
 	children: React.ReactNode;
 	handleToggle?: () => void;
+	extraStyles?: string;
 }
-function Button({ children, color, handleToggle }: Props) {
-	const style = [BASESTYLE, color ? COLORS[color] : COLORS.default].join(' ');
+function Button({ children, color, handleToggle, extraStyles }: Props) {
+	const style = [
+		BASESTYLE,
+		color ? COLORS[color] : COLORS.default,
+		extraStyles,
+	].join(' ');
 
 	return (
 		<button onClick={handleToggle} type='button' className={style}>

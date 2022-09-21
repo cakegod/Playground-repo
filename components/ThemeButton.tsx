@@ -1,3 +1,4 @@
+import { useTheme } from 'next-themes';
 import React, { useState } from 'react';
 import Button from './Button';
 interface Props {
@@ -10,14 +11,20 @@ export default function ThemeToggle({
 	untoggledIcon,
 	toggleTheme,
 }: Props) {
-	const [isToggled, setIsToggled] = useState(false);
+	const { theme } = useTheme();
+	const [isToggled, setIsToggled] = useState(theme);
 	const handleToggle = () => {
 		toggleTheme();
-		setIsToggled(!isToggled);
+		setIsToggled(isToggled === 'light' ? 'dark' : 'light');
 	};
 	return (
-		<Button handleToggle={handleToggle}>
-			{isToggled ? toggledIcon : untoggledIcon}
+		<Button
+			handleToggle={handleToggle}
+			color={isToggled === 'light' ? 'amber' : 'sky'}
+			extraStyles={`shadow-lg ${
+				isToggled === 'light' ? 'shadow-amber-500/40' : 'shadow-sky-500/40'
+			}`}>
+			{isToggled === 'light' ? untoggledIcon : toggledIcon}
 		</Button>
 	);
 }
