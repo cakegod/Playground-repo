@@ -4,17 +4,12 @@ import Button from './Button';
 interface Props {
 	toggledIcon: React.ReactNode;
 	untoggledIcon: React.ReactNode;
-	toggleTheme: () => void;
 }
-export default function ThemeToggle({
-	toggledIcon,
-	untoggledIcon,
-	toggleTheme,
-}: Props) {
-	const { theme } = useTheme();
+export default function ThemeToggle({ toggledIcon, untoggledIcon }: Props) {
+	const { theme, setTheme } = useTheme();
 	const [isToggled, setIsToggled] = useState(theme);
 	const handleToggle = () => {
-		toggleTheme();
+		setTheme(theme === 'dark' ? 'light' : 'dark');
 		setIsToggled(isToggled === 'light' ? 'dark' : 'light');
 	};
 	return (

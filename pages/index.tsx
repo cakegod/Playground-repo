@@ -28,7 +28,6 @@ const Home: NextPage = () => {
 
 			<main className='w-screen h-screen dark:bg-neutral-900 bg-white'>
 				<ThemeButton
-					toggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 					toggledIcon={<MoonIcon className='w-5 text-sky-300' />}
 					untoggledIcon={<SunIcon className='w-5 text-amber-500' />}
 				/>
