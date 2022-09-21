@@ -7,7 +7,7 @@ interface Props {
 }
 export default function ThemeToggle({ toggledIcon, untoggledIcon }: Props) {
 	const { theme, setTheme } = useTheme();
-	const [isToggled, setIsToggled] = useState(theme);
+	const [isToggled, setIsToggled] = useState(localStorage.theme || 'light');
 	const handleToggle = () => {
 		setTheme(theme === 'dark' ? 'light' : 'dark');
 		setIsToggled(isToggled === 'light' ? 'dark' : 'light');

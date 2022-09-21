@@ -2,12 +2,10 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import ThemeButton from '../components/ThemeButton';
 const Home: NextPage = () => {
 	const [mounted, setMounted] = useState(false);
-	const { theme, setTheme } = useTheme();
 
 	// useEffect only runs on the client, so now we can safely show the UI
 	useEffect(() => {
