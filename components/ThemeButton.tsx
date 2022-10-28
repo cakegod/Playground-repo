@@ -16,9 +16,7 @@ export default function ThemeToggle({ toggledIcon, untoggledIcon }: Props) {
 		<Button
 			handleToggle={handleToggle}
 			color={isToggled === 'light' ? 'amber' : 'sky'}
-			extraStyles={`shadow-lg ${
-				isToggled === 'light' ? 'shadow-amber-500/40' : 'shadow-sky-500/40'
-			}`}>
+			shadow={isToggled === 'light' ? 'sun' : 'moon'}>
 			{isToggled === 'light' ? untoggledIcon : toggledIcon}
 		</Button>
 	);
